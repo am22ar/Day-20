@@ -6,103 +6,15 @@ import org.junit.Test;
 
 public class InvalidUserInputException extends Exception
 {
-    @Test
-    public void givenFirstName_whenProper_ShouldReturnTrue() {
-        try {
-        	userRegistration userRegistrationRegEx = new userRegistration();
-            boolean result = userRegistrationRegEx.firstNameValidate("Amar");
-            Assert.assertTrue(result);
-        } catch (Exception e) {
-        }
+
+    enum ExceptionType {
+        INVALID_FIRST_NAME, INVALID_LAST_NAME, INVALID_PASSWORD, INVALID_PHONE_NUMBER, INVALID_EMAIL;
     }
 
-    @Test
-    public void givenFirstName_whenNotProper_ShouldReturnFalse() {
-        try{
-        	userRegistration userRegistrationRegEx = new userRegistration();
-        boolean result = userRegistrationRegEx.firstNameValidate("amar");
-        Assert.assertFalse(result);
-    } catch (Exception e) {
-        }
-        }
+    ExceptionType type;
 
-    @Test
-    public void givenLastName_whenProper_ShouldReturnTrue() {
-        try{
-        	userRegistration userRegistrationRegEx = new userRegistration();
-        boolean result = userRegistrationRegEx.lastNameValidate("Patil");
-        Assert.assertTrue(result);
-    } catch (Exception e) {
-    }
-    }
-
-    @Test
-    public void givenLastName_whenNotProper_ShouldReturnFalse() {
-        try{
-        	userRegistration userRegistrationRegEx = new userRegistration();
-        boolean result = userRegistrationRegEx.lastNameValidate("pati");
-        Assert.assertFalse(result);
-    } catch (Exception e) {
-        }
-    }
-
-    @Test
-    public void givenEmail_whenProper_ShouldReturnTrue() {
-        try{
-        	userRegistration userRegistrationRegEx = new userRegistration();
-        boolean result = userRegistrationRegEx.emailValidate("abc.xyz@bl.co.in");
-        Assert.assertTrue(result);
-        } catch (Exception e) {
-        }
-    }
-
-    @Test
-    public void givenEmail_whenNotProper_ShouldReturnFalse() {
-        try{
-        	userRegistration userRegistrationRegEx = new userRegistration();
-        boolean result = userRegistrationRegEx.emailValidate("abc.xyz@bl.in");
-        Assert.assertFalse(result);
-        } catch (Exception e) {
-        }
-    }
-
-    @Test
-    public void givenPhone_whenProper_ShouldReturnTrue() {
-        try{
-        	userRegistration userRegistrationRegEx = new userRegistration();
-        boolean result = userRegistrationRegEx.phoneNumberValidate("91 8426523121");
-        Assert.assertTrue(result);
-        } catch (Exception e) {
-        }
-    }
-
-    @Test
-    public void givenPhone_whenNotProper_ShouldReturnFalse() {
-        try{
-        	userRegistration userRegistrationRegEx = new userRegistration();
-        boolean result = userRegistrationRegEx.phoneNumberValidate("9561272972");
-        Assert.assertFalse(result);
-        } catch (Exception e) {
-        }
-    }
-
-    @Test
-    public void givenPassword_whenProper_ShouldReturnTrue() {
-        try{
-        userRegistration userRegistrationRegEx = new userRegistration();
-        boolean result = userRegistrationRegEx.passwordValidate("Abc12345#");
-        Assert.assertTrue(result);
-        } catch (Exception e) {
-        }
-    }
-
-    @Test
-    public void givenPassword_whenNotProper_ShouldReturnFalse() {
-        try{
-        	userRegistration userRegistrationRegEx = new userRegistration();
-        boolean result = userRegistrationRegEx.passwordValidate("Amar@12");
-        Assert.assertFalse(result);
-        } catch (Exception e) {
-        }
+    public InvalidUserInputException(ExceptionType type, String msg) {
+        super(msg);
+        this.type = type;
     }
 }
